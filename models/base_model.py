@@ -22,6 +22,7 @@ class BaseModel():
                         setattr(self, key, datetime.fromisoformayt(value))
                     else:
                         setattr(self, key, value)
+
     def __str__(self):
         """Returns the string representation of the basemodel object"""
         return "[{}] ({}) {}".format(type(self).__name__, self.id,
@@ -34,11 +35,13 @@ class BaseModel():
         storage.save()
 
     def to_dict(self):
-        """returns a dictionary representation containing all the keys/values"""
-          dict_1 = self.__dict__.copy()
-          dict_1["__class__"] = self.__class__.__name__
-          for k, v in self.__dict__.items():
-              if k in ("created_at", "updated_at"):
-                  v = self.__dict__[k].isoformat()
-                  dict_1[k] = v
-                  return dict_1
+        """
+        returns a dictionary representation containing all the keys/values
+        """
+        dict_1 = self.__dict__.copy()
+        dict_1["__class__"] = self.__class__.__name__
+        for k, v in self.__dict__.items():
+            if k in ("created_at", "updated_at"):
+                v = self.__dict__[k].isoformat()
+                dict_1[k] = v
+                return dict_1
