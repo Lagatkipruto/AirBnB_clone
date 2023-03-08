@@ -1,11 +1,14 @@
 #!/usr/bin/python3
-"""This is he base model for the Airbnb clone project"""
+"""This is the base model for the Airbnb clone project"""
 from uuid import uuid4
 from datetime import datetime
 
 
 class BaseModel():
-    """this is the baseclass for the project"""
+    """
+    this is the baseclass for the project
+    it defines the other classes
+    """
 
     def __init__(self, *args, **kwargs):
         """The initializing method"""
@@ -19,7 +22,7 @@ class BaseModel():
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key in ('created_at', 'updated_at'):
-                        setattr(self, key, datetime.fromisoformayt(value))
+                        setattr(self, key, datetime.fromisoformat(value))
                     else:
                         setattr(self, key, value)
 
