@@ -11,6 +11,7 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     """deals with json files"""
 
@@ -28,10 +29,10 @@ class FileStorage:
     def save(self):
         """serialize objs to json file"""
         with open(self.__file_path, mode="w") as f:
-             dict_storage = {}
-             for k, v in self.__objects.items():
-                 dict_storage[k] = v.to_dict()
-             json.dump(dict_storage, f)
+            dict_storage = {}
+            for k, v in self.__objects.items():
+                dict_storage[k] = v.to_dict()
+            json.dump(dict_storage, f)
 
     def reload(self):
         """deserializes json file to objects"""
